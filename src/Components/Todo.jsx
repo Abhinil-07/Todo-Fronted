@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 // import "./index.css"
 const Todo = ({ todos, fetchData }) => {
   const containerStyle = {
@@ -6,6 +7,7 @@ const Todo = ({ todos, fetchData }) => {
     gridTemplateColumns: "repeat(3, 1fr)",
     gap: "16px",
   };
+  const [btnText, setBtnText] = useState("Mark as completed")
   return (
     <div style={containerStyle}>
       {todos.map(function (todo, index) {
@@ -31,10 +33,11 @@ const Todo = ({ todos, fetchData }) => {
                   }
                 );
                 alert("Updated");
+                setBtnText("Completed")
                 fetchData();
               }}
             >
-              {todo.completed === true ? "Completed" : "Mark as completed"}
+              {btnText}
             </button>
             <button
               onClick={async function () {
