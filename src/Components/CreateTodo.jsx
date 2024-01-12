@@ -30,8 +30,8 @@ const CreateTodo = ({fetchData}) => {
       <br /> <br />
       <button
       style={{marginBottom: 10}}
-        onClick={() => {
-          axios.post("https://todo-backend-lac-omega.vercel.app/create-todo", {
+        onClick={async() => {
+          await axios.post("https://todo-backend-lac-omega.vercel.app/create-todo", {
             title: title,
             description: description,
           });
